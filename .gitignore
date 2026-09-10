@@ -1,0 +1,23 @@
+# Python & Virtual Environments
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+ENV/
+
+# Output files & temporary processing
+output_*.mp4
+temp_*.mp4
+*.png
+*.jpg
+runs/
+temp_runs/
+
+# Operating System & IDEs
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+.streamlit/
