@@ -120,8 +120,14 @@ def load_models(person_model_path="yolo11s.pt", cigarette_model_path="best.pt"):
     person_model = YOLO(person_model_path)
     
     if not os.path.exists(cigarette_model_path):
-        st.error(f"Custom model weight `{cigarette_model_path}` not found in root directory!")
-        st.stop()
+        st.info("Downloading custom cigarette detection model weights (best.pt)...")
+        gdrive_url = "https://drive.google.com/uc?export=download&id=1bVRSFUKuPyENUBAcZmGeOIHQh8gKLCn2"
+        try:
+            import urllib.request
+            urllib.request.urlretrieve(gdrive_url, cigarette_model_path)
+        except Exception as e:
+            st.error(f"Could not download model weights automatically: {e}")
+            st.stop()
         
     cig_model = YOLO(cigarette_model_path)
     return person_model, cig_model
